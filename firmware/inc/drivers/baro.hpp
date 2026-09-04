@@ -3,6 +3,13 @@
 
 Class MS5611 {
 public:
+  void init();
+
+  void readPressureAndTemperature();
+
+  float getPressure();
+  float getTemperature();
+  float getAltitude();
   
 
 private:
