@@ -16,6 +16,11 @@ private:
   int spiChannel = 0; // change once we assign pin
   int csPin = 0; // Change once we assign a pin
 
+  SPI_HandleTypeDef* hspi;   // TODO(pins)
+  GPIO_TypeDef* csPort;      // TODO(pins)
+  uint16_t csPin;            // TODO(pins)
+  OSR osr = OSR::OSR_4096;   // TODO(pins)
+
   enum class OSR: uint8_t { // found from command data sheet OSR (8 bits per) pg 10
         OSR_256  = 0x40,
         OSR_512  = 0x42,
