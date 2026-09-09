@@ -1,7 +1,7 @@
 #pragma once
 #include <cstdint>
 
-Class MS5611 {
+class MS5611 {
 public:
   void init();
 
