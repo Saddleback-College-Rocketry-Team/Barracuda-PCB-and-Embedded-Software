@@ -3,13 +3,24 @@
 
 class MS5611 {
 public:
-  void init();
+  MS5611(SPI_HandleTypeDef* hspi, GPIO_TypeDef* csPort, uint16_t csPin);
+  bool init();
 
   void readPressureAndTemperature();
 
   float getPressure();
   float getTemperature();
   float getAltitude();
+
+enum class OSR: uint8_t { // found from command data sheet OSR (8 bits per) pg 10
+        OSR_256  = 0x40,
+        OSR_512  = 0x42,
+        OSR_1024 = 0x44,
+        OSR_2048 = 0x46,
+        OSR_4096 = 0x48
+  };
+
+void setOSR(OSR osr) { this->osr = osr; }
   
 
 private:
@@ -21,13 +32,7 @@ private:
   uint16_t csPin;            // TODO(pins)
   OSR osr = OSR::OSR_4096;   // TODO(pins)
 
-  enum class OSR: uint8_t { // found from command data sheet OSR (8 bits per) pg 10
-        OSR_256  = 0x40,
-        OSR_512  = 0x42,
-        OSR_1024 = 0x44,
-        OSR_2048 = 0x46,
-        OSR_4096 = 0x48
-  };
+
 
   // factory calibration coefficients read from PROM addresses 1-6.
 
