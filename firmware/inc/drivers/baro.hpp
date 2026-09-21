@@ -32,7 +32,7 @@ private:
   uint16_t csPin;            // TODO(pins)
   OSR osr = OSR::OSR_4096;   // TODO(pins)
 
-
+// more
 
   // factory calibration coefficients read from PROM addresses 1-6.
 
